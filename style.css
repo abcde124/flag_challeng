@@ -48,7 +48,7 @@ body div.bg-earth {
     width: 100vw;
     height: 100vh;
     position: absolute;
-    background: url(https://i.ibb.co/87GbbFP/2799006.jpg) no-repeat;
+    background: #000;
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -200,7 +200,7 @@ body main {
             gap: 4px;
 
             & svg {
-                fill: #250E40;
+                fill: #ffffff;
             }
         }
 
