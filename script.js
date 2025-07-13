@@ -11,11 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchCountries() {
         try {
-            const res = await fetch('https://restcountries.com/v3.1/all?fields=name,translations,flags,cca2');
+            const res = await fetch('https://restcountries.com/v3.1/all?fields=name,translations,flags,cca2,unMember');
             const data = await res.json();
 
             return data
-                .filter(c => c.flags?.png && (c.translations?.por?.common || c.name?.common))
+                .filter(c =>
+                    c.unMember &&                              // 🔹 Apenas membros da ONU
+                    c.flags?.png &&
+                    (c.translations?.por?.common || c.name?.common)
+                )
                 .map(c => ({
                     ...c,
                     displayName: c.translations?.por?.common || c.name.common
