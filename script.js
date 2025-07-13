@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let score = 0;
     let currentRound = 1;
-    const totalRounds = 20;
     let countries = [];
     let gameQueue = [];
 
@@ -46,18 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupGame() {
         score = 0;
         currentRound = 1;
-        gameQueue = shuffle([...countries]).slice(0, totalRounds);
+        gameQueue = shuffle([...countries]); // <<< usa todos
         updateScore();
         loadNextRound();
     }
 
     function updateScore() {
         scoreElement.textContent = score;
-        roundElement.textContent = `${currentRound}/${totalRounds}`;
+        roundElement.textContent = `${currentRound}/${gameQueue.length}`;
     }
 
     function loadNextRound() {
-        if (currentRound > totalRounds) {
+        if (currentRound > gameQueue.length) {
             return setupGame();
         }
 
